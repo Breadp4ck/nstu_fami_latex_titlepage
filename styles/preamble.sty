@@ -1,0 +1,109 @@
+\usepackage[main=russian,english]{babel}
+\usepackage[no-math]{fontspec}
+\usepackage{geometry}
+\usepackage[dvips,xetex]{graphicx}
+\usepackage{fancyhdr}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+%\usepackage[default]{raleway} % Шрифт Raleway
+\usepackage[pages=some]{background}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{hyperref}
+
+% Устанавливаем нужные шрифты
+\setmainfont{Raleway}[
+Extension = .ttf,
+UprightFont = fonts/Raleway/*-Regular,
+ItalicFont = fonts/Raleway/*-Italic,
+BoldFont = fonts/Raleway/*-Bold,
+BoldItalicFont = fonts/Raleway/*-Bold-Italic,]
+\setmonofont{AnonymousPro}[
+Extension = .ttf,
+UprightFont = fonts/AnonymousPro/*-Regular,
+ItalicFont = fonts/AnonymousPro/*-Italic,
+BoldFont = fonts/AnonymousPro/*-Bold,
+BoldItalicFont = fonts/AnonymousPro/*-Bold-Italic,]
+
+% Формируем размеры документа и отступы
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm
+}
+
+% Рамка для титульника
+\backgroundsetup{
+scale=1.0,
+color=black,
+opacity=0.4,
+angle=0,
+contents={%
+	\includegraphics[width=0.9\paperwidth,height=0.929\paperheight]{pic/border}
+	}%
+}
+
+% Настройка цвета
+\definecolor{LightGray}{gray}{0.98}
+
+% Перевод листинга на русский
+\renewcommand{\listingscaption}{Листинг}
+
+% Разукрашивание сыслок
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+% Вставка файла с кодом на C++
+\newmintedfile[cpplst]{cpp} {
+	fontfamily=tt,
+	numberblanklines=true,
+	numbersep=5pt,
+	frame=leftline,
+	framerule=0.4pt,
+	framesep=2mm,
+	funcnamehighlighting=true,
+	tabsize=4,
+	breaklines=true,
+	linenos=true,
+	breakanywhere=true,
+	bgcolor=LightGray,
+}
+
+% Вставка файла с кодом на C#
+\newmintedfile[chlst]{csharp} {
+	fontfamily=tt,
+	numberblanklines=true,
+	numbersep=5pt,
+	frame=leftline,
+	framerule=0.4pt,
+	framesep=2mm,
+	funcnamehighlighting=true,
+	tabsize=4,
+	breaklines=true,
+	linenos=true,
+	breakanywhere=true,
+	bgcolor=LightGray,
+}
+
+% Вставка файла с кодом на Python
+\newmintedfile[pylst]{python} {
+	fontfamily=tt,
+	numberblanklines=true,
+	numbersep=5pt,
+	frame=leftline,
+	framerule=0.4pt,
+	framesep=2mm,
+	funcnamehighlighting=true,
+	tabsize=4,
+	breaklines=true,
+	linenos=true,
+	breakanywhere=true,
+	bgcolor=LightGray,
+}

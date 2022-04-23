@@ -10,63 +10,56 @@
 \import{titlepage/}{title_old} % Титульный лист
 \import{titlepage/}{title_new} % Титульный лист
 
-\tableofcontents
+\tableofcontents % Так выглядит вставка с содержанием
+
 
 \section{Самая главная секция}
 
 На первых двух страницах приведены два варианта титульника: старый и новый. Далее приведён возможный вариант стил
 
+
 \subsection{Шрифт}
 
 В качестве шрифтов используются \href{https://fonts.google.com/specimen/Raleway}{Raleway} и \href{https://fonts.google.com/specimen/Anonymous+Pro}{AnonymousPro}.
 
-\begin{itemize}
-	\item Обычный начертаник, regular font.
-	\item \textit{Курсивное начертание, italic font.}
-	\item \textbf{Жирное начертание, bold font.}
-	\item \texttt{Моноширное начертание, mono font.}
-\end{itemize}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Raleway, regular.
+		\item \textit{Raleway, italic.}
+		\item \textbf{Raleway, bold.}
+		\item \textbf{\textit{Raleway, bold italic.}}
+		\item \texttt{AnonymousPro, mono.}
+		\item \textit{\texttt{AnonymousPro, mono italic.}}
+		\item \textbf{\texttt{AnonymousPro, mono bold.}}
+		\item \textbf{\texttt{AnonymousPro, mono bold italic.}}
+	\end{itemize}
+\end{multicols}
+
 
 \subsection{Математические формулы}
+
+\marginpar{\textcolor{olive}{\textbf{TODO} МБ есть формула поинтереснее?}}
 
 В качестве примера приведена формула интегрирования по частям для определённого интеграла \eqref{simple_equation}.
 
 \begin{equation} \label{simple_equation}
-\int\limits_a^b u dv = uv \Big|_a^b - \int\limits_a^b v du
+\Int_a^b u dv = uv \Big|_a^b - \Int_a^b v du
 \end{equation} 
+
 
 \subsection{Листинг}
 
-В качестве примера приведена простая программа на языке Python (Листинг~\ref{listing:simple_code}).
+В качестве примера приведена простая программа на языке Python (Листинг~\ref{lst:simple_code}). 
 
-\begin{minted}
-[
-	fontfamily=tt,
-	numberblanklines=true,
-	numbersep=5pt,
-	frame=leftline,
-	framerule=0.4pt,
-	framesep=2mm,
-	funcnamehighlighting=true,
-	tabsize=4,
-	breaklines=true,
-	linenos=true,
-	breakanywhere=true,
-	bgcolor=LightGray,
-]{python}
-def main():
-    greet('Sanya')
-
-def greet(name):
-    print('Hello, {}!'.format(name))
-
-if __name__ == '__main__':
-    main()
-\end{minted}
+\lst{python}{code/main.py} 
 \captionof{listing}{Простая программа на Python}
-\label{listing:simple_code}
+\label{lst:simple_code}
 
+% Принудительно делаем новую страницу для красоты.
+% Вообще, так делать не стоит, т.к. если вдруг что-то поменяете сверху,
+% то может смотреться некрасиво
 \newpage
+
 
 \subsection{Картинка}
 
@@ -77,5 +70,40 @@ if __name__ == '__main__':
 	\caption{Mistborn: Luthadel at night by Ricky Ho}
 	\label{pic:luthadel}
 \end{figure}
+
+
+\subsection{Красивая нумерация}
+
+Можно красиво нумировать списки:
+
+\begin{enumerate}[(a)]
+    \item Вот раз.
+    \item А вот два, причём:
+    \begin{enumerate}[1 $\to$]
+    	\item Можно использовать любые символы для нумерации.
+    	\item Даже математические!
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection*{Секция, которая не отобрзится в содержании и без цифры!}
+
+\textcolor{gray}{\xout{этого текста нет на картах!}}
+
+
+\subsection{Таблички}
+
+Таблицы можно делать с помощью пакета \texttt{csvsimple}\footnote{Для несложных таблиц.} или \texttt{pgfplotstable}\footnote{Для таблиц с большим количеством разнородной информации.}. А можно вставлять напрямую:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|l|l|} \hline
+		& \textbf{Имя} & \textbf{Фамилия} \\ \hline
+		1 & Гаррье & Дюбуа \\ \hline
+		2 & Ким & Кицураги \\ \hline
+	\end{tabular}
+	\caption{Главные герои Disco Elysium.}
+	\label{table:disco_main_characters}
+\end{table}
 
 \end{document}

@@ -1,31 +1,42 @@
-\usepackage[main=russian,english]{babel}
-\usepackage[no-math]{fontspec}
-\usepackage{geometry}
-\usepackage[dvips,xetex]{graphicx}
-\usepackage{fancyhdr}
-\usepackage[subpreambles=true]{standalone}
-\usepackage{import}
-%\usepackage[default]{raleway} % Шрифт Raleway
-\usepackage[pages=some]{background}
-\usepackage{xcolor}
-\usepackage{minted}
-\usepackage{amsmath}
-\usepackage{caption}
-\usepackage{hyperref}
+\usepackage[main=russian,english]{babel} % Русский язык
+\usepackage[no-math]{fontspec}  % Что-то для поддержки шрифтов
+\usepackage{geometry} % Настройка формата отдельных элементов
+\usepackage[dvips,xetex]{graphicx} % Поддержка графики
+\usepackage{fancyhdr} % Настройка колонтитулов
+\usepackage[subpreambles=true]{standalone} % Поддержка нескольких tex-файлов
+\usepackage{import} % Имортирование tex файлов
+\usepackage[pages=some]{background} % Вставка изображений на задний фон
+\usepackage{xcolor} % Поддержка разных цветов
+\usepackage{minted} % Вставка кода
+\usepackage{amsmath} % Математические символы
+\usepackage{amsfonts} % Шрифты для математики
+\usepackage{amssymb} % Больше математических символов
+\usepackage{amsthm} % Нумерация теорем
+\usepackage{caption} % Подпись к чему-то
+\usepackage{hyperref} % Вставка ссылок и их раскрасска
+\usepackage{xurl} % Красивая вставка ссылок
+\usepackage{indentfirst} % Делать отступы для первых абзацев тоже
+\usepackage{multicol} % Объединение столбцов для для таблиц
+\usepackage[shortlabels]{enumitem} % Для красивой нумерации
+\usepackage{csvsimple} % Вставка простых табличек
+\usepackage{pgfplotstable} % Вставка сложных табличек
+\usepackage{ulem} % Для подчёркиваний и перечёркиваний текста
 
 % Устанавливаем нужные шрифты
 \setmainfont{Raleway}[
-Extension = .ttf,
-UprightFont = fonts/Raleway/*-Regular,
-ItalicFont = fonts/Raleway/*-Italic,
-BoldFont = fonts/Raleway/*-Bold,
-BoldItalicFont = fonts/Raleway/*-Bold-Italic,]
+	Extension = .ttf,
+	UprightFont = fonts/Raleway/*-Regular,
+	ItalicFont = fonts/Raleway/*-Italic,
+	BoldFont = fonts/Raleway/*-Bold,
+	BoldItalicFont = fonts/Raleway/*-Bold-Italic,
+]
 \setmonofont{AnonymousPro}[
-Extension = .ttf,
-UprightFont = fonts/AnonymousPro/*-Regular,
-ItalicFont = fonts/AnonymousPro/*-Italic,
-BoldFont = fonts/AnonymousPro/*-Bold,
-BoldItalicFont = fonts/AnonymousPro/*-Bold-Italic,]
+	Extension = .ttf,
+	UprightFont = fonts/AnonymousPro/*-Regular,
+	ItalicFont = fonts/AnonymousPro/*-Italic,
+	BoldFont = fonts/AnonymousPro/*-Bold,
+	BoldItalicFont = fonts/AnonymousPro/*-Bold-Italic,
+]
 
 % Формируем размеры документа и отступы
 \geometry{
@@ -37,12 +48,12 @@ BoldItalicFont = fonts/AnonymousPro/*-Bold-Italic,]
 
 % Рамка для титульника
 \backgroundsetup{
-scale=1.0,
-color=black,
-opacity=0.4,
-angle=0,
-contents={%
-	\includegraphics[width=0.9\paperwidth,height=0.929\paperheight]{pic/border}
+	scale=1.0,
+	color=black,
+	opacity=0.4,
+	angle=0,
+	contents={%
+		\includegraphics[width=0.9\paperwidth,height=0.929\paperheight]{pic/border}
 	}%
 }
 
@@ -55,55 +66,38 @@ contents={%
 % Разукрашивание сыслок
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
+    linkcolor=teal,
+    filecolor=purple,      
     urlcolor=blue,
 }
 
-% Вставка файла с кодом на C++
-\newmintedfile[cpplst]{cpp} {
-	fontfamily=tt,
-	numberblanklines=true,
-	numbersep=5pt,
-	frame=leftline,
-	framerule=0.4pt,
-	framesep=2mm,
-	funcnamehighlighting=true,
-	tabsize=4,
-	breaklines=true,
-	linenos=true,
-	breakanywhere=true,
-	bgcolor=LightGray,
+% \lst вставляет код из файла, где
+% первый аргумент -- язык, второй -- имя файла
+\newcommand{\lst}[2] {
+	\inputminted[
+		fontfamily=tt,
+		numberblanklines=true,
+		numbersep=5pt,
+		frame=leftline,
+		framerule=0.4pt,
+		framesep=2mm,
+		funcnamehighlighting=true,
+		tabsize=2,
+		breaklines=true,
+		linenos=true,
+		breakanywhere=true,
+		%bgcolor=LightGray,
+		fontsize=\footnotesize,
+	]{#1}{#2}
 }
 
-% Вставка файла с кодом на C#
-\newmintedfile[chlst]{csharp} {
-	fontfamily=tt,
-	numberblanklines=true,
-	numbersep=5pt,
-	frame=leftline,
-	framerule=0.4pt,
-	framesep=2mm,
-	funcnamehighlighting=true,
-	tabsize=4,
-	breaklines=true,
-	linenos=true,
-	breakanywhere=true,
-	bgcolor=LightGray,
+% \mtext принимает текст в качестве аргумента.
+% используется для вставки слов в математические формулы
+\newcommand{\mtext}[1] {
+	\, \text{#1} \,
 }
 
-% Вставка файла с кодом на Python
-\newmintedfile[pylst]{python} {
-	fontfamily=tt,
-	numberblanklines=true,
-	numbersep=5pt,
-	frame=leftline,
-	framerule=0.4pt,
-	framesep=2mm,
-	funcnamehighlighting=true,
-	tabsize=4,
-	breaklines=true,
-	linenos=true,
-	breakanywhere=true,
-	bgcolor=LightGray,
+% \Int большой интеграл
+\newcommand{\Int} {
+	\displaystyle\int\limits
 }

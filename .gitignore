@@ -1,0 +1,7 @@
+*.toc
+*.aux
+*.sta
+*.gz
+*.log
+*.out
+_minted-*

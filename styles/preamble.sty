@@ -67,7 +67,7 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=teal,
-    filecolor=purple,      
+    filecolor=purple,
     urlcolor=blue,
 }
 
@@ -75,19 +75,19 @@
 % первый аргумент -- язык, второй -- имя файла
 \newcommand{\lst}[2] {
 	\inputminted[
-		fontfamily=tt,
-		numberblanklines=true,
-		numbersep=5pt,
-		frame=leftline,
-		framerule=0.4pt,
-		framesep=2mm,
-		funcnamehighlighting=true,
-		tabsize=2,
-		breaklines=true,
-		linenos=true,
-		breakanywhere=true,
-		%bgcolor=LightGray,
-		fontsize=\footnotesize,
+		fontfamily=tt,              % шрифт
+		numberblanklines=true,      % нумерация пустых строк
+		numbersep=5pt,              % расстояние между нумерацией и кодом
+		frame=leftline,             % вертикальная фрейм слева от кода
+		framerule=0.4pt,            % ширина фрейма
+		framesep=2mm,               % расстояние между фреймом и кодом
+		funcnamehighlighting=true,  % только для PHP
+		tabsize=2,                  % количество пробелов в табуляции
+		breaklines=true,            % перенос строк
+		linenos=true,               % нумерация строк
+		breakanywhere=true,         % разрывы для длинных строк
+		%bgcolor=LightGray,         % цвет фона
+		fontsize=\footnotesize,     % размер используемого шрифта
 	]{#1}{#2}
 }
 

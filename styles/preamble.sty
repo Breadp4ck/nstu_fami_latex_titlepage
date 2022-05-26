@@ -130,9 +130,24 @@
 	\, \text{#1} \,
 }
 
-% \Int большой интеграл
+% \Int большой интеграл (область правее знака интеграла)
 \newcommand{\Int} {
+	\displaystyle\int
+}
+
+% \INT очень большой интеграл (промежуток над и под знаком интеграла)
+\newcommand{\INT} {
 	\displaystyle\int\limits
+}
+
+% \Sum большая сумма (информация о сумме правее её знака)
+\newcommand{\Sum} {
+	\displaystyle\sum
+}
+
+% \SUM очень большая сумма (информация о сумме под и над её знаком)
+\newcommand{\SUM} {
+	\displaystyle\sum\limits
 }
 
 % Имитация малых прописных (small caps), \fauxsc{что-то}

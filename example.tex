@@ -12,7 +12,6 @@
 
 \tableofcontents % Так выглядит вставка с содержанием
 
-
 \section{Самая главная секция}
 
 На первых двух страницах приведены два варианта титульника: старый и новый. Далее приведён возможный вариант стил
@@ -44,14 +43,14 @@
 
 \begin{equation} \label{simple_equation}
 \INT_a^b u dv = uv \Big|_a^b - \INT_a^b v du
-\end{equation} 
+\end{equation}
 
 
 \subsection{Листинг}
 
-В качестве примера приведена простая программа на языке Python (Листинг~\ref{lst:simple_code}). 
+В качестве примера приведена простая программа на языке Python (Листинг~\ref{lst:simple_code}).
 
-\lst{python}{code/main.py} 
+\lst{python}{code/main.py}
 \captionof{listing}{Простая программа на Python}
 \label{lst:simple_code}
 
@@ -59,6 +58,87 @@
 % Вообще, так делать не стоит, т.к. если вдруг что-то поменяете сверху,
 % то может смотреться некрасиво
 \newpage
+
+%-------------------------------------------------------------------------------
+\subsection{Алгоритм}
+
+% Перевод данных об алгоритмах
+\renewcommand{\listalgorithmname}{Список алгоритмов}
+\floatname{algorithm}{Алгоритм}
+
+% Перевод команд псевдокода
+\algrenewcommand\algorithmicwhile{\textbf{До тех пор пока}}
+\algrenewcommand\algorithmicdo{\textbf{выполнять}}
+\algrenewcommand\algorithmicrepeat{\textbf{Повторять}}
+\algrenewcommand\algorithmicuntil{\textbf{Пока выполняется}}
+\algrenewcommand\algorithmicend{\textbf{Конец}}
+\algrenewcommand\algorithmicif{\textbf{Если}}
+\algrenewcommand\algorithmicelse{\textbf{иначе}}
+\algrenewcommand\algorithmicthen{\textbf{тогда}}
+\algrenewcommand\algorithmicfor{\textbf{Цикл}}
+\algrenewcommand\algorithmicforall{\textbf{Выполнить для всех}}
+\algrenewcommand\algorithmicfunction{\textbf{Функция}}
+\algrenewcommand\algorithmicprocedure{\textbf{Процедура}}
+\algrenewcommand\algorithmicloop{\textbf{Зациклить}}
+\algrenewcommand\algorithmicrequire{\textbf{Условия:}}
+\algrenewcommand\algorithmicensure{\textbf{Обеспечивающие условия:}}
+\algrenewcommand\algorithmicreturn{\textbf{Возвратить}}
+\algrenewtext{EndWhile}{\textbf{Конец цикла}}
+\algrenewtext{EndLoop}{\textbf{Конец зацикливания}}
+\algrenewtext{EndFor}{\textbf{Конец цикла}}
+\algrenewtext{EndFunction}{\textbf{Конец функции}}
+\algrenewtext{EndProcedure}{\textbf{Конец процедуры}}
+\algrenewtext{EndIf}{\textbf{Конец условия}}
+\algrenewtext{EndFor}{\textbf{Конец цикла}}
+\algrenewtext{BeginAlgorithm}{\textbf{Начало алгоритма}}
+\algrenewtext{EndAlgorithm}{\textbf{Конец алгоритма}}
+\algrenewtext{BeginBlock}{\textbf{Начало блока: }}
+\algrenewtext{EndBlock}{\textbf{Конец блока}}
+\algrenewtext{ElsIf}{\textbf{иначе если }}
+
+\begin{algorithm}
+    \caption{Пример алгоритма}\label{alg:Example1}
+    \begin{algorithmic}[1]
+        \State $ X = 45 $ \Comment{Пример комментария}
+        \For{\textbf{от} i=0 \textbf{до} 5}
+            \State $ X = X - 2 $
+            \State \Call{find}{X}
+
+            \While{$ Y_2 < 5 $} \Comment{Пояснение к циклу}
+                \If{$ quality \ge 9 $}
+                \State $ a \gets perfect $
+                \ElsIf{$ quality \ge 7 $}
+                \State $ a \gets good $
+                \ElsIf{$ quality \ge 5 $}
+                \State $ a \gets medium $
+                \ElsIf{$ quality \ge 3 $}
+                \State $ a \gets bad $
+                \Else
+                \State $ a \gets unusable $
+                \EndIf
+            \EndWhile
+
+            \State \Return $ X $
+            \BeginBlock Прибавление 2:
+                \State $ X += 2 $
+            \EndBlock
+        \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+    \caption{Пример алгоритма для оглавления алгоритмов}\label{alg:Example2}
+    \begin{algorithmic}[1]
+        \Require $ x \ge 5 $ \Comment{Пояснение условия}
+        \Statex
+        \While{$ x > -5 $}
+        \State $ x \gets x - 1 $
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+
+\listofalgorithms
+%-------------------------------------------------------------------------------
 
 
 \subsection{Картинка}
